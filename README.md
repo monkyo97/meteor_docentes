@@ -5,6 +5,7 @@ Un sistema de tutorias de horarios para los docentes de la Universidad Técnica 
 El código está desarrollado de la manera más entendible posible y de manera antigua, conformado por If - Else If 
 
 ## La manera de desabilitar los días del Calendario es si existen 2 seleccionados, desabilita los demas horarios del día 
+```js
 function desabilitar_dias(L,Ma,Mi,J,V){
 	for (c = 1; c < 9; c++) {
 		if(L==2){
@@ -26,3 +27,4 @@ function desabilitar_dias(L,Ma,Mi,J,V){
 	
 	return true;
 }
+```
