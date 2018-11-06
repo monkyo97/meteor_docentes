@@ -1,0 +1,88 @@
+Paquetes instalados en la aplicacion
+
+twbs:bootstrap
+matb33:bootstrap-glyphicons
+percolate:momentum
+accounts-ui
+accounts-password
+alanning:roles
+
+
+Insertar datos desde la consola del navegador 
+
+tematicas.insert({tematica: "Manejo de Chat"});
+tematicas.insert({tematica: "Manejo de Consulta"});
+tematicas.insert({tematica: "Manejo de Cuestionarios"});
+tematicas.insert({tematica: "Manejo de Foro"});
+tematicas.insert({tematica: "Manejo de Glosario"});
+tematicas.insert({tematica: "Manejo de Lección"});
+tematicas.insert({tematica: "Manejo de Taller"});
+tematicas.insert({tematica: "Manejo de Tareas"});
+tematicas.insert({tematica: "Manejo de Archivo"});
+tematicas.insert({tematica: "Manejo de Carpeta"});
+tematicas.insert({tematica: "Manejo de Etiqueta"});
+tematicas.insert({tematica: "Manejo de Libro"});
+tematicas.insert({tematica: "Manejo de Página"});
+tematicas.insert({tematica: "Gestión y administración del curso"});
+tematicas.insert({tematica: "Gestión de personas"});
+tematicas.insert({tematica: "Revisión, evaluación y calificaciones"});
+tematicas.insert({tematica: "Configuracion de la interfaz de la asignatura"});
+tematicas.insert({tematica: "Configuración del curso"});
+
+******************************************************************************************
+******************************************************************************************
+
+Accounts.createUser({email: "eavila2222@utm.edu.ec" ,password:"1314072222",
+profile: {apellido1:"AVILA",apellido2:"ALVARADO",nombre:"ERWIN ALEXANDER",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"7",
+correo:"eavila2222@utm.edu.ec",cedula:"1314072222",edad:"21"}});
+
+Accounts.createUser({email:"havila6808@utm.edu.ec",password:"1313506808",
+profile:{apellido1:"AVILA",apellido2:"MOREIRA",nombre:"HENRY WILFRIDO",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"7",
+correo:"havila6808@utm.edu.ec",cedula:"1313506808",edad:"24"}});
+
+
+Accounts.createUser({email:"jballadares5671@utm.edu.ec",password:"1312655671",
+profile:{apellido1:"BALLADARES",apellido2:"MONCAYO",nombre:"JOSE DANIEL",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"7",
+correo:"jballadares5671@utm.edu.ec",cedula:"1312655671",edad:"23"}});
+
+
+Accounts.createUser({email:"rbarberan8295@utm.edu.ec",password:"1316388295",
+profile:{apellido1:"BARBERAN",apellido2:"TEJENA",nombre:"RODDY XAVIER",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"9",
+correo:"rbarberan8295@utm.edu.ec",cedula:"1316388295",edad:"21"}});
+
+Accounts.createUser({email:"hbeltron6385@utm.edu.ec",password:"1314506385",
+profile:{apellido1:"BELTRON",apellido2:"MOREIRA",nombre:"HUMBERTO ARISTIDES",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"7",
+correo:"hbeltron6385@utm.edu.ec",cedula:"1314506385",edad:"21"}});
+
+
+Accounts.createUser({email:"sbermudez3630@utm.edu.ec",password:"1316583630",
+profile:{apellido1:"BERMUDEZ",apellido2:"FIGUEROA",nombre:"SANDRA SOLANGE",genero:"FEMENINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"8",
+correo:"sbermudez3630@utm.edu.ec",cedula:"1316583630",edad:"23"}});
+
+
+Accounts.createUser({email:"jlopez7567@utm.edu.ec",password:"1313347567",
+profile:{apellido1:"LOPEZ",apellido2:"FARIAS",nombre:"JOHN LEVI",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"10",
+correo:"jlopez7567@utm.edu.ec",cedula:"1313347567",edad:"25"}});
+
+
+Accounts.createUser({email:"olopez7574@utm.edu.ec",password:"1312697574",
+profile:{apellido1:"LOPEZ",apellido2:"GOROZABEL",nombre:"OSCAR ALEXANDER",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"7",
+correo:"olopez7574@utm.edu.ec",cedula:"1312697574",edad:"21"}});
+
+Accounts.createUser({email:"flopez9110@utm.edu.ec",password:"1311429110",
+profile:{apellido1:"LOPEZ",apellido2:"MERA",nombre:"FRANKLIN RAUL",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"7",
+correo:"flopez9110@utm.edu.ec",cedula:"1311429110",edad:"32"}});
+
+Accounts.createUser({email:"rmacias5942@utm.edu.ec",password:"1310605942",
+profile:{apellido1:"MACIAS",apellido2:"MERO",nombre:"ROBINSON FABIAN",genero:"MASCULINO",
+escuela:"INGENIERIA DE SISTEMAS INFORMATICOS",facultad:"CIENCIAS INFORMATICAS",canton:"PORTOVIEJO",nivel:"8",
+correo:"rmacias5942@utm.edu.ec",cedula:"1310605942",edad:"31"}});
