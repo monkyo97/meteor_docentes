@@ -1,0 +1,369 @@
+<head>
+  <title>Docentes</title>
+</head>
+
+<body>
+  <center>
+    <h1>Universidad Tecnica de Manabi</h1>
+  </center>
+    {{#if currentUser}}
+      {{> baseLayout}}
+      <div align="center">
+        {{> datos}}
+      </div>
+      <div>
+        {{> tabla}}
+      </div>
+      <div align="center">
+        {{> mostrar}}
+      </div>
+    {{else}}
+        {{> login}}
+    {{/if}}
+</body>
+
+<template name="login">
+  <form>
+    <div align="center">
+      <img src="/images/Logo_utm.png" class="img-rounded" style="width: 200px"> <br><br>
+    <div class="col-xs-4 input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input type="text" name="usr" class="form-control" required="" placeholder="Correo Institucional">
+    </div><br>
+    <div class="col-xs-4 input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input type="password" name="pass" minlength="8" class="form-control" required="" placeholder="Ingrese Password">
+    </div><br>
+
+    <button type="submit" class="btn btn-success">Ingresar</button>
+    </div>
+  </form>
+</template>
+
+
+<template name="baseLayout">
+  <nav class="navbar navbar-default">
+      <div class="container-fluid">     
+      <div class="navbar-brand navbar-right">
+      {{#if currentUser}}
+          {{ currentUser.profile.apellido1}} 
+          {{ currentUser.profile.apellido2}} 
+          {{ currentUser.profile.nombre}}
+
+          <button id="blogout" class="btn btn-danger"> Salir</button>
+      {{else}}
+        <a class="navbar-brand" href="#">Login for Continue</a>
+      {{/if}}
+
+        </div>
+      <ul class="nav navbar-nav navbar-left">
+        {{#if currentUser}}          
+          <li><a id="all_registros" href="">Inicio</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+</template>
+
+
+<!-- Use Para verificar Rol
+
+<template name="header">
+  ... regular header stuff
+  {{#if isInRole 'admin'}}
+    {{> admin_nav}}  
+  {{/if}}
+  {{#if isInRole 'admin,editor'}}
+    {{> editor_stuff}}
+  {{/if}}
+</template>
+
+-->
+
+
+<template name="datos">
+  <form>
+    <center>
+      <div align="center" class="form-group col-sm-3">
+          <h3>Datos del Usuario</h3>
+          <input class="form-control" type="text" id="cedu" name="cedu" disabled="true" value="{{ currentUser.profile.cedula}}"> <br>
+          <input class="form-control" type="text" id="nomb" name="nomb" disabled="true" value="{{ currentUser.profile.nombre}}"> <br>
+          <input class="form-control" type="text" id="apell1" name="apell1" disabled="true" value="{{ currentUser.profile.apellido1}}"> <br>
+          <input class="form-control" type="text" id="apell2" name="apell2" disabled="true" value="{{ currentUser.profile.apellido2}}"> <br>
+          <input class="form-control" type="text" id="correo" name="correo" disabled="true" value="{{ currentUser.profile.correo}}"> <br>
+
+          <input class="form-control" type="text" id="conth" name="conth" value="Cantidad de Horarios: 0 de 5" disabled="true"> <br>
+      </div>
+
+      <div align="center" class="col-sm-6">
+        <img src="/images/Logo_utm.png" class="img-rounded" style="width: 200px"> <br><br><br><br>
+        <button id="bhorarios" class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"> Borrar Horarios</span></button>
+        <button id="bguardar" type="submit" class="btn btn-primary" disabled="true"><span class="glyphicon glyphicon-ok"> Guardar Horario</span></Button><br><br>
+        <form>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Cambiar Password</button><br>
+         <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    {{> Cambiar }}
+                    <div class="modal-footer">
+                        <a href="#"><span data-dismiss="modal" class="glyphicon glyphicon-eye-close"> Regresar</span></a>
+                    </div>
+                </div>
+            </div>
+          </div>  
+      </form>
+      </div>
+
+      <div align="center" class="form-group col-sm-3">
+        <h3>Fechas Seleccionadas</h3>
+        <input class="form-control" type="text" id="fecha1" name="fecha1" placeholder="fecha1" disabled="true"> <br>
+        <input class="form-control" type="text" id="fecha2" name="fecha2" placeholder="fecha2" disabled="true"> <br>
+        <input class="form-control" type="text" id="fecha3" name="fecha3" placeholder="fecha3" disabled="true"> <br>
+        <input class="form-control" type="text" id="fecha4" name="fecha4" placeholder="fecha4" disabled="true"> <br>
+        <input class="form-control" type="text" id="fecha5" name="fecha5" placeholder="fecha5" disabled="true"> <br>
+      </div>
+    </center>
+  </form>
+</template>
+
+<template name="Cambiar"> 
+    <center>
+        <br>
+        <i><b style="font-size: 20px">Cambio de contrase&ntilde;a</b> </i>
+        <br><br>
+        <img src="/images/changepassword.png" style="width: 200px"> <br><br>
+        <form>
+          <div align="center">
+            <div class="col-xs-8 input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input class="form-control" id="actual" minlength="8" placeholder="Contraseña actual" type="password" required=""><br>
+            </div><br>
+            <div class="col-xs-8 input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input class="form-control" id="nueva"  minlength="8" placeholder="Contraseña nueva" type="password" required=""><br>
+            </div><br>
+
+            <button type="submit" class="btn btn-info" id="changepass">Cambiar contraseña</button>
+          </div>
+        </form>
+    </center>
+</template>
+
+
+<template name="mostrar">
+  <center>
+    <div class="form-group col-sm-offset-1 col-sm-10">
+      <h1>Datos de Usuarios Registrados</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido1</th>
+            <th scope="col">Apellido2</th>
+            <th scope="col">Fechas</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each show}}
+          <tr>
+            <td scope="row"> {{cedula}}</td>
+            <td scope="row"> {{nombre}}</td>
+            <td scope="row"> {{apellido1}}</td>
+            <td scope="row"> {{apellido2}}</td>
+            <td scope="row"> 
+              {{tematicas.fecha1}} <br>
+              {{tematicas.fecha2}} <br>
+              {{tematicas.fecha3}} <br>
+              {{tematicas.fecha4}} <br>
+              {{tematicas.fecha5}} 
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>  
+      </table>
+    </div>
+  </center>
+</template>
+
+
+
+<template name="tabla">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="panel panel-default">
+    <div class="panel-body">
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Seleccionar Horario</button>
+       
+            <select id='tematica' class="temap form-group navbar-right" required>
+              <option value='opc1' class='opc1' disabled selected>Seleccionar Tematica</option>
+              {{#each mostrar}}
+                <option value="">{{tematica}}</option>  
+              {{/each}}
+            </select>
+        <div id="demo" class="collapse">
+          <div class="table-striped">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Horario</th>
+                  <th scope="col">Lunes</th>
+                  <th scope="col">Martes</th>
+                  <th scope="col">Miercoles</th>
+                  <th scope="col">Jueves</th>
+                  <th scope="col">Viernes</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr >
+                <td scope="row">08:00 - 09:00</td>
+                <td>
+                  <button id="l1" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma1" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi1" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j1" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v1" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">09:00 - 10:00</td>
+                <td>
+                  <button id="l2" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma2" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi2" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j2" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v2" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">10:00 - 11:00</td>
+                <td>
+                  <button id="l3" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma3" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi3" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j3" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v3" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">11:00 - 12:00</td>
+                <td>
+                  <button id="l4" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma4" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi4" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j4" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v4" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">14:30 - 15:30</td>
+                <td>
+                  <button id="l5" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma5" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi5" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j5" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v5" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">15:30 - 16:30</td>
+                <td>
+                  <button id="l6" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma6" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi6" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j6" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v6" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+              <tr >
+                <td scope="row">16:30 - 17:30</td>
+                <td>
+                  <button id="l7" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma7" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi7" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j7" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v7" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">17:30 - 18:30</td>
+                <td>
+                  <button id="l8" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="ma8" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="mi8" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="j8" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+                <td>
+                  <button id="v8" class="btn btn-success"><span class="glyphicon glyphicon-user"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> 
+      </div> 
+    </div>
+    </div>
+  </div>
+</template>
