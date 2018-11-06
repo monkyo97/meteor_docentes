@@ -1,0 +1,23 @@
+html{
+	height: 10%;
+}
+
+body {
+  padding: 10px;
+  font-family: sans-serif;
+
+}
+
+.BackUtm{
+	position: absolute;
+	right: 0px;
+	width: 500px;
+	height: 560px;
+	opacity: 0.1;
+	background-attachment: fixed;
+	background-repeat: no-repeat; 
+	top: 100%;
+	overflow: scroll;
+}
+
+
